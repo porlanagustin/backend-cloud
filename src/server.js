@@ -13,6 +13,14 @@ app.use((err, req, res, next) => {
 });
 
 app.use("/api", router);
+app.get("/", (req, res) => {
+  res.send(`
+    <h1>¡Hola, mundo!</h1>
+    <p>IP del cliente: ${req.ip}</p>
+    <p>Host: ${req.headers.host}</p>
+    <p>User-Agent: ${req.headers["user-agent"]}</p>
+  `);
+});
 
 async function startServer() {
   try {
